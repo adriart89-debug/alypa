@@ -23,9 +23,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--cream);color:var(--charcoal);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-    background-image:linear-gradient(var(--tile) 1px,transparent 1px),linear-gradient(90deg,var(--tile) 1px,transparent 1px);
-    background-size:88px 88px;background-position:center top;}
+  body{background:var(--cream);color:var(--charcoal);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
 
   /* decorative: diagonal stripes from the Alypa logo */
   .deco-stripes{position:absolute;pointer-events:none;opacity:.5;z-index:0;
@@ -33,12 +31,16 @@
   .deco-stripes.sand{background:repeating-linear-gradient(125deg,var(--sand) 0 3px,transparent 3px 15px);opacity:.35;}
   .deco-stripes.cream{background:repeating-linear-gradient(125deg,var(--cream) 0 3px,transparent 3px 15px);opacity:.14;}
 
-  /* decorative: real ceramic material texture (for antracita sections) */
-  .deco-panels{position:absolute;inset:0;pointer-events:none;z-index:0;background-size:cover;background-position:center;opacity:1;}
-  .deco-panels.slate{background-image:url('assets/img/tex-slate-dark.jpg');}
-  .deco-panels.pavimento{background-image:url('assets/img/tex-stone-wall.jpg');}
-  /* light veil so text stays legible over the clearly visible texture */
-  .deco-panels::before{content:"";position:absolute;inset:0;background:rgba(20,17,14,.42);}
+  /* decorative: real ceramic material texture (for antracita sections) — barely-there hint */
+  .deco-panels{position:absolute;inset:0;pointer-events:none;z-index:0;background-size:cover;background-position:center;opacity:.16;}
+  .deco-panels.slate{background-image:url('assets/img/tex-slate-dark.jpg');opacity:.4;}
+  .deco-panels.pavimento{background-image:url('assets/img/tex-stone-wall.jpg');opacity:.4;}
+
+  /* decorative: subtle material hint for light sections */
+  .deco-tex{position:absolute;inset:0;pointer-events:none;z-index:0;background-size:cover;background-position:center;opacity:.1;mix-blend-mode:multiply;}
+  .deco-tex.marble{background-image:url('assets/img/tex-marble-white.jpg');opacity:.14;}
+  .deco-tex.microcement{background-image:url('assets/img/tex-microcement.jpg');opacity:.12;}
+  .deco-tex.marble-grey{background-image:url('assets/img/tex-marble-grey.jpg');opacity:.1;}
   h1,h2,h3,.serif{font-family:'Fraunces',serif;}
   a{color:inherit;text-decoration:none;}
   img{display:block;width:100%;height:100%;object-fit:cover;}
@@ -235,6 +237,7 @@
 </section>
 
 <section id="nosotros">
+  <div class="deco-tex marble"></div>
   <div class="wrap intro">
     <div class="intro-img">
       <img src="assets/img/nosotros.jpg" alt="Exposición Alypa en Las Chafiras">
@@ -254,6 +257,7 @@
 </section>
 
 <section id="materiales" style="padding-top:40px;">
+  <div class="deco-tex microcement"></div>
   <div class="wrap">
     <div class="portals-head">
       <span class="eyebrow">Materiales</span>
