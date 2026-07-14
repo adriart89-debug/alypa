@@ -18,14 +18,34 @@
     --sand:#C7A46E;
     --line:rgba(30,27,24,0.12);
     --line-inv:rgba(243,238,228,0.16);
+    --tile:rgba(30,27,24,0.035);
+    --tile-inv:rgba(243,238,228,0.05);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--cream);color:var(--charcoal);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  body{background:var(--cream);color:var(--charcoal);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(var(--tile) 1px,transparent 1px),linear-gradient(90deg,var(--tile) 1px,transparent 1px);
+    background-size:88px 88px;background-position:center top;}
+
+  /* decorative: diagonal stripes from the Alypa logo */
+  .deco-stripes{position:absolute;pointer-events:none;opacity:.5;z-index:0;
+    background:repeating-linear-gradient(125deg,var(--red) 0 3px,transparent 3px 15px);}
+  .deco-stripes.sand{background:repeating-linear-gradient(125deg,var(--sand) 0 3px,transparent 3px 15px);opacity:.35;}
+  .deco-stripes.cream{background:repeating-linear-gradient(125deg,var(--cream) 0 3px,transparent 3px 15px);opacity:.14;}
+
+  /* decorative: large-format ceramic panel simulation (for antracita sections) */
+  .deco-panels{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.9;
+    background-image:
+      linear-gradient(90deg,rgba(243,238,228,.06) 1px,transparent 1px),
+      linear-gradient(rgba(243,238,228,.06) 1px,transparent 1px);
+    background-size:440px 300px;
+    background-position:center center;
+    -webkit-mask-image:radial-gradient(ellipse 120% 110% at 65% 35%,#000,transparent 88%);
+    mask-image:radial-gradient(ellipse 120% 110% at 65% 35%,#000,transparent 88%);}
   h1,h2,h3,.serif{font-family:'Fraunces',serif;}
   a{color:inherit;text-decoration:none;}
   img{display:block;width:100%;height:100%;object-fit:cover;}
-  .wrap{max-width:1280px;margin:0 auto;padding:0 48px;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 48px;position:relative;z-index:2;}
   .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--red);margin-bottom:16px;display:block;}
 
   /* header */
@@ -47,7 +67,7 @@
   .hero{height:100vh;min-height:660px;position:relative;display:flex;align-items:center;overflow:hidden;}
   .hero-media{position:absolute;inset:0;}
   .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,14,.72) 0%,rgba(20,17,14,.35) 55%,rgba(20,17,14,.15) 100%);}
-  .hero-inner{position:relative;padding:0 48px;color:var(--cream);max-width:760px;}
+  .hero-inner{position:relative;z-index:4;padding:0 48px;color:var(--cream);max-width:760px;}
   .hero .kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--sand);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
   .hero .kicker .rule{width:48px;height:1px;background:var(--sand);display:inline-block;}
   .hero h1{font-size:clamp(40px,6vw,80px);font-weight:400;line-height:1.02;letter-spacing:-.015em;margin-bottom:26px;}
@@ -56,7 +76,7 @@
   .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--cream);font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.7;display:flex;flex-direction:column;align-items:center;gap:8px;}
   .scroll-cue span{width:1px;height:40px;background:var(--cream);opacity:.5;}
 
-  section{padding:150px 0;}
+  section{padding:150px 0;position:relative;overflow:hidden;}
 
   /* manifesto / origin - piedra fluida style repeated statement */
   .origin{background:var(--charcoal);color:var(--cream);text-align:center;padding:170px 0;}
@@ -197,6 +217,7 @@
 
 <section class="hero" id="top">
   <div class="hero-media"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1800&q=80" alt="Baño con revestimiento cerámico"></div>
+  <div class="deco-stripes" style="right:48px;top:110px;width:120px;height:120px;opacity:.7;z-index:3;"></div>
   <div class="hero-inner">
     <div class="kicker"><span class="rule"></span>Cerámica de altura · Tenerife, Canarias</div>
     <h1>Superficies que<br><em>habitan</em> el espacio.</h1>
@@ -206,6 +227,7 @@
 </section>
 
 <section class="origin">
+  <div class="deco-panels"></div>
   <div class="wrap">
     <span class="eyebrow">Desde 2012</span>
     <h2>Empezamos con una idea sencilla: que un buen material <em>no se nota, se siente.</em> Trece años después, seguimos eligiendo cada pieza como si fuera para nuestra propia casa.</h2>
@@ -252,6 +274,7 @@
 </section>
 
 <section class="why" id="why">
+  <div class="deco-panels"></div>
   <div class="wrap">
     <div class="why-head">
       <span class="eyebrow">Por qué Alypa</span>
