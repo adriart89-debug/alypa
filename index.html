@@ -33,15 +33,12 @@
   .deco-stripes.sand{background:repeating-linear-gradient(125deg,var(--sand) 0 3px,transparent 3px 15px);opacity:.35;}
   .deco-stripes.cream{background:repeating-linear-gradient(125deg,var(--cream) 0 3px,transparent 3px 15px);opacity:.14;}
 
-  /* decorative: large-format ceramic panel simulation (for antracita sections) */
-  .deco-panels{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.9;
-    background-image:
-      linear-gradient(90deg,rgba(243,238,228,.06) 1px,transparent 1px),
-      linear-gradient(rgba(243,238,228,.06) 1px,transparent 1px);
-    background-size:440px 300px;
-    background-position:center center;
-    -webkit-mask-image:radial-gradient(ellipse 120% 110% at 65% 35%,#000,transparent 88%);
-    mask-image:radial-gradient(ellipse 120% 110% at 65% 35%,#000,transparent 88%);}
+  /* decorative: real ceramic material texture (for antracita sections) */
+  .deco-panels{position:absolute;inset:0;pointer-events:none;z-index:0;background-size:cover;background-position:center;opacity:1;}
+  .deco-panels.slate{background-image:url('assets/img/tex-slate-dark.jpg');}
+  .deco-panels.pavimento{background-image:url('assets/img/tex-stone-wall.jpg');}
+  /* light veil so text stays legible over the clearly visible texture */
+  .deco-panels::before{content:"";position:absolute;inset:0;background:rgba(20,17,14,.42);}
   h1,h2,h3,.serif{font-family:'Fraunces',serif;}
   a{color:inherit;text-decoration:none;}
   img{display:block;width:100%;height:100%;object-fit:cover;}
@@ -80,6 +77,7 @@
 
   /* manifesto / origin - piedra fluida style repeated statement */
   .origin{background:var(--charcoal);color:var(--cream);text-align:center;padding:170px 0;}
+  .origin .wrap::before{content:"";position:absolute;inset:-80px -10% ;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(20,17,14,.72),transparent 75%);z-index:-1;}
   .origin .eyebrow{color:var(--sand);}
   .origin h2{font-size:clamp(26px,3.4vw,46px);font-weight:400;line-height:1.28;max-width:960px;margin:0 auto;letter-spacing:-.01em;}
   .origin h2 em{font-style:italic;color:var(--red);}
@@ -114,7 +112,8 @@
   /* WHY ALYPA - interactive hotspot journey */
   .why{background:var(--charcoal);color:var(--cream);overflow:hidden;position:relative;}
   .why .eyebrow{color:var(--sand);}
-  .why-head{text-align:center;max-width:640px;margin:0 auto 20px;}
+  .why-head{text-align:center;max-width:640px;margin:0 auto 20px;position:relative;}
+  .why-head::before{content:"";position:absolute;inset:-60px -60px;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(20,17,14,.7),transparent 78%);z-index:-1;}
   .why-head h2{font-size:clamp(28px,3.4vw,46px);font-weight:400;letter-spacing:-.01em;}
   .why-head p{font-size:15px;opacity:.7;margin-top:16px;font-weight:300;}
   .why-stage{position:relative;max-width:1000px;margin:40px auto 0;height:560px;}
@@ -227,7 +226,7 @@
 </section>
 
 <section class="origin">
-  <div class="deco-panels"></div>
+  <div class="deco-panels slate"></div>
   <div class="wrap">
     <span class="eyebrow">Desde 2012</span>
     <h2>Empezamos con una idea sencilla: que un buen material <em>no se nota, se siente.</em> Trece años después, seguimos eligiendo cada pieza como si fuera para nuestra propia casa.</h2>
@@ -274,7 +273,7 @@
 </section>
 
 <section class="why" id="why">
-  <div class="deco-panels"></div>
+  <div class="deco-panels pavimento"></div>
   <div class="wrap">
     <div class="why-head">
       <span class="eyebrow">Por qué Alypa</span>
